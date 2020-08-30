@@ -13,7 +13,7 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-                        Image(systemName: "book")
+                    Image(systemName: "book")
                     Text("Pensamentos")
             }
             ConfigView()
@@ -27,6 +27,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(ViewModel())
     }
 }

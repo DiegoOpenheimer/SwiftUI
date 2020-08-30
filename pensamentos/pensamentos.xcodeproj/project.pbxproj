@@ -10,11 +10,16 @@
 		4A821A4324FB1FE800A1692A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A4224FB1FE800A1692A /* AppDelegate.swift */; };
 		4A821A4524FB1FE800A1692A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A4424FB1FE800A1692A /* SceneDelegate.swift */; };
 		4A821A4724FB1FE800A1692A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A4624FB1FE800A1692A /* ContentView.swift */; };
-		4A821A4924FB1FF000A1692A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A4824FB1FF000A1692A /* Assets.xcassets */; };
 		4A821A4C24FB1FF000A1692A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A4B24FB1FF000A1692A /* Preview Assets.xcassets */; };
 		4A821A4F24FB1FF000A1692A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A4D24FB1FF000A1692A /* LaunchScreen.storyboard */; };
 		4A821A5924FB22B300A1692A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A5824FB22B300A1692A /* HomeView.swift */; };
 		4A821A5B24FB22E500A1692A /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A5A24FB22E500A1692A /* ConfigView.swift */; };
+		4A821A5D24FB29FB00A1692A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A5C24FB29FB00A1692A /* Assets.xcassets */; };
+		4A821A6024FB2A2000A1692A /* Savoye LET.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A5F24FB2A2000A1692A /* Savoye LET.ttc */; };
+		4A821A6524FB2A8600A1692A /* quotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A821A6224FB2A8600A1692A /* quotes.json */; };
+		4A821A6624FB2A8600A1692A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6324FB2A8600A1692A /* Quote.swift */; };
+		4A821A6724FB2A8600A1692A /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6424FB2A8600A1692A /* QuoteManager.swift */; };
+		4A821A6924FB2B5800A1692A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6824FB2B5800A1692A /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +27,17 @@
 		4A821A4224FB1FE800A1692A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A821A4424FB1FE800A1692A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4A821A4624FB1FE800A1692A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4A821A4824FB1FF000A1692A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A821A4B24FB1FF000A1692A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4A821A4E24FB1FF000A1692A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A821A5024FB1FF000A1692A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A821A5824FB22B300A1692A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4A821A5A24FB22E500A1692A /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		4A821A5C24FB29FB00A1692A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../../Downloads/iOS-master/Pensamentos/Pensamentos/Assets.xcassets"; sourceTree = "<group>"; };
+		4A821A5F24FB2A2000A1692A /* Savoye LET.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Savoye LET.ttc"; sourceTree = "<group>"; };
+		4A821A6224FB2A8600A1692A /* quotes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quotes.json; sourceTree = "<group>"; };
+		4A821A6324FB2A8600A1692A /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		4A821A6424FB2A8600A1692A /* QuoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
+		4A821A6824FB2B5800A1692A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +70,18 @@
 		4A821A4124FB1FE800A1692A /* pensamentos */ = {
 			isa = PBXGroup;
 			children = (
+				4A821A6124FB2A8600A1692A /* Models */,
+				4A821A5E24FB2A2000A1692A /* Assets */,
+				4A821A5C24FB29FB00A1692A /* Assets.xcassets */,
 				4A821A5724FB229700A1692A /* config */,
 				4A821A5624FB228C00A1692A /* home */,
 				4A821A4224FB1FE800A1692A /* AppDelegate.swift */,
 				4A821A4424FB1FE800A1692A /* SceneDelegate.swift */,
 				4A821A4624FB1FE800A1692A /* ContentView.swift */,
-				4A821A4824FB1FF000A1692A /* Assets.xcassets */,
 				4A821A4D24FB1FF000A1692A /* LaunchScreen.storyboard */,
 				4A821A5024FB1FF000A1692A /* Info.plist */,
 				4A821A4A24FB1FF000A1692A /* Preview Content */,
+				4A821A6824FB2B5800A1692A /* ViewModel.swift */,
 			);
 			path = pensamentos;
 			sourceTree = "<group>";
@@ -95,6 +108,26 @@
 				4A821A5A24FB22E500A1692A /* ConfigView.swift */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		4A821A5E24FB2A2000A1692A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4A821A5F24FB2A2000A1692A /* Savoye LET.ttc */,
+			);
+			name = Assets;
+			path = "../../../../../../Downloads/iOS-master/Pensamentos/Pensamentos/Assets";
+			sourceTree = "<group>";
+		};
+		4A821A6124FB2A8600A1692A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4A821A6224FB2A8600A1692A /* quotes.json */,
+				4A821A6324FB2A8600A1692A /* Quote.swift */,
+				4A821A6424FB2A8600A1692A /* QuoteManager.swift */,
+			);
+			name = Models;
+			path = "../../../../../../Downloads/iOS-master/Pensamentos/Pensamentos/Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +189,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A821A4F24FB1FF000A1692A /* LaunchScreen.storyboard in Resources */,
+				4A821A6524FB2A8600A1692A /* quotes.json in Resources */,
 				4A821A4C24FB1FF000A1692A /* Preview Assets.xcassets in Resources */,
-				4A821A4924FB1FF000A1692A /* Assets.xcassets in Resources */,
+				4A821A5D24FB29FB00A1692A /* Assets.xcassets in Resources */,
+				4A821A6024FB2A2000A1692A /* Savoye LET.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +206,10 @@
 				4A821A4324FB1FE800A1692A /* AppDelegate.swift in Sources */,
 				4A821A5B24FB22E500A1692A /* ConfigView.swift in Sources */,
 				4A821A5924FB22B300A1692A /* HomeView.swift in Sources */,
+				4A821A6724FB2A8600A1692A /* QuoteManager.swift in Sources */,
 				4A821A4524FB1FE800A1692A /* SceneDelegate.swift in Sources */,
+				4A821A6624FB2A8600A1692A /* Quote.swift in Sources */,
+				4A821A6924FB2B5800A1692A /* ViewModel.swift in Sources */,
 				4A821A4724FB1FE800A1692A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
