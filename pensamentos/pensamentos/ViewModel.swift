@@ -11,11 +11,16 @@ import Combine
 
 class ViewModel : ObservableObject {
     
-    private let quoteManager: QuoteManager
+    private var quoteManager: QuoteManager
     @Published var currentQuote: Quote;
     
     init() {
         quoteManager = QuoteManager()
+        currentQuote = quoteManager.getRandomQuote()
+    }
+    
+    
+    func changeQuote() {
         currentQuote = quoteManager.getRandomQuote()
     }
     

@@ -13,30 +13,47 @@ struct HomeView: View {
     @State var animated = false
     @EnvironmentObject var viewModel: ViewModel;
     
+    fileprivate func buildInformation(_ geo: GeometryProxy) -> some View {
+         VStack {
+            Image(self.viewModel.currentQuote.image)
+                .resizable()
+                .aspectRatio(755/666, contentMode: .fit)
+                .opacity(self.animated == false ? 0 : 1)
+                .layoutPriority(1)
+            Text(self.viewModel.currentQuote.quote)
+                .font(Font.custom("Savoye LET", size: 35))
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.1)
+                .offset(x: 0, y: !self.animated ? 100 : 0)
+                .padding(7)
+            Text(self.viewModel.currentQuote.author)
+                .font(Font.custom("Savoye LET", size: 40))
+                .offset(x: 0, y: !self.animated ? 100 : 0)
+            Spacer()
+        }.frame(width: geo.size.width)
+    }
+    
     var body: some View {
-        ZStack {
-            Image(viewModel.currentQuote.image)
-            .resizable()
-            .blur(radius: 10)
-                .aspectRatio(contentMode: .fill)
-            Color(red: 1, green: 1, blue: 1, opacity: 0.7)
-            GeometryReader { geo in
-                VStack {
-                    Image(self.viewModel.currentQuote.image)
-                    .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geo.size.width, height: geo.size.width * 0.5)
-                        .opacity(self.animated == false ? 0 : 1)
-                        .animation(.easeIn(duration: 0.5))
-                    Text(self.viewModel.currentQuote.quote)
-                        .font(Font.custom("Savoye LET", size: 30))
-                        .padding(7)
-                        .lineLimit(nil)
-                    Spacer()
-                }
-            }
-        }.onAppear {
-            withAnimation {
+        GeometryReader { geo in
+            ZStack {
+                Image(self.viewModel.currentQuote.image)
+                .resizable()
+                .blur(radius: 10)
+                    .aspectRatio(contentMode: .fill)
+                Color(red: 1, green: 1, blue: 1, opacity: 0.7)
+                self.buildInformation(geo)
+            }.frame(width: geo.size.width)
+        }.onAppear(perform: updateAnimation)
+            .onTapGesture {
+                self.animated = false
+                self.viewModel.changeQuote()
+                self.updateAnimation()
+        }
+    }
+    
+    func updateAnimation() {
+        if !animated {
+            withAnimation (.easeInOut(duration: 0.5)) {
                 self.animated.toggle()
             }
         }
