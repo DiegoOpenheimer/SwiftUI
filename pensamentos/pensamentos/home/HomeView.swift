@@ -14,7 +14,10 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel;
     
     fileprivate func buildInformation(_ geo: GeometryProxy) -> some View {
-         VStack {
+        
+        let textColor: Color = viewModel.schemaColor == SchemaColor.LIGHT ? .black : .white
+        
+         return VStack {
             Image(self.viewModel.currentQuote.image)
                 .resizable()
                 .aspectRatio(755/666, contentMode: .fit)
@@ -26,9 +29,11 @@ struct HomeView: View {
                 .minimumScaleFactor(0.1)
                 .offset(x: 0, y: !self.animated ? 100 : 0)
                 .padding(7)
+                .foregroundColor(textColor)
             Text(self.viewModel.currentQuote.author)
                 .font(Font.custom("Savoye LET", size: 40))
                 .offset(x: 0, y: !self.animated ? 100 : 0)
+                .foregroundColor(textColor)
             Spacer()
         }.frame(width: geo.size.width)
     }
@@ -40,14 +45,29 @@ struct HomeView: View {
                 .resizable()
                 .blur(radius: 10)
                     .aspectRatio(contentMode: .fill)
-                Color(red: 1, green: 1, blue: 1, opacity: 0.7)
+                
+                if self.viewModel.schemaColor == SchemaColor.DARK {
+                    Color("AppOrange").opacity(0.7)
+                } else {
+                    Color(red: 1, green: 1, blue: 1, opacity: 0.7)
+                }
+                
                 self.buildInformation(geo)
             }.frame(width: geo.size.width)
-        }.onAppear(perform: updateAnimation)
+        }.onAppear(perform: onStart)
+            .onDisappear(perform: viewModel.onDestroy)
             .onTapGesture {
                 self.animated = false
                 self.viewModel.changeQuote()
-                self.updateAnimation()
+                self.onStart()
+        }
+    }
+    
+    func onStart() {
+        updateAnimation()
+        viewModel.onStart {
+            self.animated = false
+            self.updateAnimation()
         }
     }
     

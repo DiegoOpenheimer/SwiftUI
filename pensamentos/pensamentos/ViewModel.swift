@@ -9,12 +9,26 @@
 import Foundation
 import Combine
 
+enum SchemaColor {
+    case DARK
+    case LIGHT
+}
+
+typealias AfterTime = () -> Void
+
 class ViewModel : ObservableObject {
     
     private var quoteManager: QuoteManager
-    @Published var currentQuote: Quote;
+    private var timer: Timer?
+    @Published var currentQuote: Quote
+    @Published var time: Double
+    @Published var changeAutomatic: Bool
+    @Published var schemaColor: SchemaColor
     
     init() {
+        time = 3
+        changeAutomatic = true
+        schemaColor = SchemaColor.LIGHT
         quoteManager = QuoteManager()
         currentQuote = quoteManager.getRandomQuote()
     }
@@ -22,6 +36,20 @@ class ViewModel : ObservableObject {
     
     func changeQuote() {
         currentQuote = quoteManager.getRandomQuote()
+    }
+    
+    func onStart(afterTime callback: AfterTime?) {
+        timer?.invalidate()
+        if changeAutomatic {
+            timer = Timer.scheduledTimer(withTimeInterval: time, repeats: true) { _ in
+                self.changeQuote()
+                callback?()
+            }
+        }
+    }
+    
+    func onDestroy() {
+        timer?.invalidate()
     }
     
 }

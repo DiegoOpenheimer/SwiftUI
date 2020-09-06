@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
+        initialize()
         let contentView = ContentView().environmentObject(ViewModel())
 
         // Use a UIHostingController as window root view controller.
@@ -57,6 +58,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+    
+    func initialize() {
+        
+        // change color component switch
+        UISwitch.appearance().onTintColor = UIColor(named: "AppOrange")
+
+        // change color from segment component
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: "AppOrange")
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(named: "AppOrange") ?? .orange], for: .normal)
     }
 
 

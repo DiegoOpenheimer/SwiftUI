@@ -9,13 +9,52 @@
 import SwiftUI
 
 struct ConfigView: View {
+    
+    @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
-        Text("Hello, Config View")
+        VStack {
+            Text("Mudar automaticamente")
+            Toggle("", isOn: $viewModel.changeAutomatic)
+                .labelsHidden()
+            Spacer().frame(height: 16)
+            Divider()
+            Text("Mudar após \(Int(viewModel.time)) segundos")
+                .padding(.top, 16)
+            buildTimeLine()
+            Spacer().frame(height: 50)
+            viewSchemaColors()
+            Spacer()
+            Text("Obs: Para mudar de pensamento basta tomar em qualquer lugar na tela de \"Pensamentos\"")
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color("AppOrange"))
+        }.padding()
+            .accentColor(Color("AppOrange"))
+    }
+    
+    func viewSchemaColors() -> some View {
+        return VStack {
+            Text("Esquema de cores")
+            Picker("", selection: $viewModel.schemaColor) {
+                Text("Claro").tag(SchemaColor.LIGHT)
+                Text("Escuro").tag(SchemaColor.DARK)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .labelsHidden()
+        }
+    }
+    
+    func buildTimeLine() -> some View {
+        return HStack {
+            Text("3")
+            Slider(value: $viewModel.time, in: 3...30, step: 1)
+            Text("30")
+        }
     }
 }
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView()
+        ConfigView().environmentObject(ViewModel())
     }
 }
