@@ -55,7 +55,7 @@ struct HomeView: View {
                 self.buildInformation(geo)
             }.frame(width: geo.size.width)
         }.onAppear(perform: onStart)
-            .onDisappear(perform: viewModel.onDestroy)
+            .onDisappear(perform: viewModel.onStopTimer)
             .onTapGesture {
                 self.animated = false
                 self.viewModel.changeQuote()

@@ -20,10 +20,11 @@
 		4A821A6624FB2A8600A1692A /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6324FB2A8600A1692A /* Quote.swift */; };
 		4A821A6724FB2A8600A1692A /* QuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6424FB2A8600A1692A /* QuoteManager.swift */; };
 		4A821A6924FB2B5800A1692A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A821A6824FB2B5800A1692A /* ViewModel.swift */; };
+		4AD324C52506641900660F40 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD324C42506641900660F40 /* UserRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4A821A3F24FB1FE800A1692A /* pensamentos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pensamentos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A821A3F24FB1FE800A1692A /* pensamentos.dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pensamentos.dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A821A4224FB1FE800A1692A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A821A4424FB1FE800A1692A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4A821A4624FB1FE800A1692A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		4A821A6324FB2A8600A1692A /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		4A821A6424FB2A8600A1692A /* QuoteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteManager.swift; sourceTree = "<group>"; };
 		4A821A6824FB2B5800A1692A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		4AD324C42506641900660F40 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,7 @@
 		4A821A4024FB1FE800A1692A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A821A3F24FB1FE800A1692A /* pensamentos.app */,
+				4A821A3F24FB1FE800A1692A /* pensamentos.dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +72,7 @@
 		4A821A4124FB1FE800A1692A /* pensamentos */ = {
 			isa = PBXGroup;
 			children = (
+				4AD324C3250663DE00660F40 /* repository */,
 				4A821A6124FB2A8600A1692A /* Models */,
 				4A821A5E24FB2A2000A1692A /* Assets */,
 				4A821A5C24FB29FB00A1692A /* Assets.xcassets */,
@@ -130,6 +133,14 @@
 			path = "../../../../../../Downloads/iOS-master/Pensamentos/Pensamentos/Models";
 			sourceTree = "<group>";
 		};
+		4AD324C3250663DE00660F40 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				4AD324C42506641900660F40 /* UserRepository.swift */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,7 +158,7 @@
 			);
 			name = pensamentos;
 			productName = pensamentos;
-			productReference = 4A821A3F24FB1FE800A1692A /* pensamentos.app */;
+			productReference = 4A821A3F24FB1FE800A1692A /* pensamentos.dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -205,6 +216,7 @@
 			files = (
 				4A821A4324FB1FE800A1692A /* AppDelegate.swift in Sources */,
 				4A821A5B24FB22E500A1692A /* ConfigView.swift in Sources */,
+				4AD324C52506641900660F40 /* UserRepository.swift in Sources */,
 				4A821A5924FB22B300A1692A /* HomeView.swift in Sources */,
 				4A821A6724FB2A8600A1692A /* QuoteManager.swift in Sources */,
 				4A821A4524FB1FE800A1692A /* SceneDelegate.swift in Sources */,
@@ -346,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_ID_SUFFIX = .dev;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"pensamentos/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -354,8 +367,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.openheimer.pensamentos;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.openheimer.pensamentos$(BUNDLE_ID_SUFFIX)";
+				PRODUCT_NAME = "$(TARGET_NAME)$(BUNDLE_ID_SUFFIX)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_ID_SUFFIX = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"pensamentos/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -380,6 +394,80 @@
 			};
 			name = Release;
 		};
+		4A9053B12506B2C40088195F /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Beta;
+		};
+		4A9053B22506B2C40088195F /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_ID_SUFFIX = .beta;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"pensamentos/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = pensamentos/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.openheimer.pensamentos$(BUNDLE_ID_SUFFIX)";
+				PRODUCT_NAME = "$(TARGET_NAME)$(BUNDLE_ID_SUFFIX)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Beta;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -388,6 +476,7 @@
 			buildConfigurations = (
 				4A821A5124FB1FF000A1692A /* Debug */,
 				4A821A5224FB1FF000A1692A /* Release */,
+				4A9053B12506B2C40088195F /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -397,6 +486,7 @@
 			buildConfigurations = (
 				4A821A5424FB1FF000A1692A /* Debug */,
 				4A821A5524FB1FF000A1692A /* Release */,
+				4A9053B22506B2C40088195F /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

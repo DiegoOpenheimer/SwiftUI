@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-enum SchemaColor {
+enum SchemaColor: String {
     case DARK
     case LIGHT
 }
@@ -18,21 +18,24 @@ typealias AfterTime = () -> Void
 
 class ViewModel : ObservableObject {
     
+    private let userRepository: UserRepository
     private var quoteManager: QuoteManager
     private var timer: Timer?
+    private var subscription: AnyCancellable?
     @Published var currentQuote: Quote
     @Published var time: Double
     @Published var changeAutomatic: Bool
     @Published var schemaColor: SchemaColor
     
     init() {
-        time = 3
-        changeAutomatic = true
-        schemaColor = SchemaColor.LIGHT
+        userRepository = UserRepository.shared
+        time = userRepository.time
+        changeAutomatic = userRepository.changeAutomatic
+        schemaColor = userRepository.schemaColor
         quoteManager = QuoteManager()
         currentQuote = quoteManager.getRandomQuote()
+        startListener()
     }
-    
     
     func changeQuote() {
         currentQuote = quoteManager.getRandomQuote()
@@ -48,9 +51,20 @@ class ViewModel : ObservableObject {
         }
     }
     
-    func onDestroy() {
+    func onStopTimer() {
         timer?.invalidate()
     }
     
+    private func startListener() {
+        subscription = Publishers.CombineLatest3($schemaColor, $time, $changeAutomatic)
+            .sink {
+                self.userRepository.schemaColor = $0.0
+                self.userRepository.time = $0.1
+                self.userRepository.changeAutomatic = $0.2
+            }
+    }
+    
+    func onDestroy() {
+        subscription?.cancel()
+    }
 }
-

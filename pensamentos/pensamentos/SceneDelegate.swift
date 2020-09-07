@@ -12,6 +12,8 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var viewModel: ViewModel?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         initialize()
-        let contentView = ContentView().environmentObject(ViewModel())
+        let contentView = ContentView().environmentObject(viewModel!)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -37,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        viewModel?.onDestroy()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -61,6 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func initialize() {
+        viewModel = ViewModel()
         
         // change color component switch
         UISwitch.appearance().onTintColor = UIColor(named: "AppOrange")
