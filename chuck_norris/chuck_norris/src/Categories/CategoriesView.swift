@@ -16,15 +16,15 @@ struct CategoriesView: View {
         ZStack {
             if categoryViewModel.isLoading {
                 ProgressView()
-                    .animation(.easeInOut)
-            } else if categoryViewModel.messageError != nil && !categoryViewModel.messageError!.isEmpty {
-                Text(categoryViewModel.messageError!)
-                .animation(.easeInOut)
+            } else if let message = categoryViewModel.messageError {
+                Text(message)
             } else {
                 List(categoryViewModel.categories, id: \.self) { name in
-                    Text(name)
+                    NavigationLink(destination: CategoryDetailsView(name: name)
+                                    .navigationBarTitle(Text(name), displayMode: .inline)) {
+                        Text(name)
+                    }
                 }
-                .animation(.easeInOut)
 
             }
         }

@@ -23,8 +23,8 @@ class Http {
         }
     }
     
-    func get<T: Decodable>(path: String) -> AnyPublisher<Result<T, AFError>, Never> {
-        return AF.request("\(url)\(path)", method: .get)
+    func get<T: Decodable>(path: String, parameters: [String : Any]? = nil) -> AnyPublisher<Result<T, AFError>, Never> {
+        return AF.request("\(url)\(path)", method: .get, parameters: parameters)
             .publishDecodable(type: T.self)
             .result()
     }

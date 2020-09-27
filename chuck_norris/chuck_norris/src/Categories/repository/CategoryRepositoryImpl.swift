@@ -18,20 +18,32 @@ class CategoryRepositoryImpl : CategoryRepository {
         http = Http()
     }
     
+    private func handleError<T>(result: Result<T, AFError>) throws -> T {
+        switch result {
+            case .failure(let error):
+                throw error
+            case .success(let values):
+                return values
+        }
+    }
+    
     func loadCategories() -> AnyPublisher<[String], CategoryError> {
         var publisher: AnyPublisher<Result<[String], AFError>, Never>
         publisher = http.get(path: "jokes/categories")
         return publisher
-            .tryMap { response in
-                switch (response) {
-                    case .failure(let error):
-                        throw error
-                    case .success(let values):
-                        return values
-                }
-            }
+            .tryMap(handleError)
             .mapError { _ in CategoryError(message: "Fail to retrive data from server") }
             .eraseToAnyPublisher()
+    }
+    
+    func loadCategory(params: Dictionary<String, Any>?) -> AnyPublisher<Category, CategoryError> {
+        var publisher: AnyPublisher<Result<Category, AFError>, Never>
+        publisher = http.get(path: "jokes/random", parameters: params)
+        return publisher
+            .tryMap(handleError)
+            .mapError { _ in CategoryError(message: "Fail to get category from server") }
+            .eraseToAnyPublisher()
+        
     }
     
 }
