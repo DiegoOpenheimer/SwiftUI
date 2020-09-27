@@ -16,6 +16,7 @@ struct HomeView: View {
                     Image("logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .padding()
                     ItemOption(icon: "folder", title: "Categories", destination: CategoriesView())
                     .padding()
                     ItemOption(icon: "command", title: "Random", destination: Text("okay"))
@@ -54,7 +55,9 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             HomeView()
-                .previewDevice("iPad (8th generation)")
+                .previewDevice("iPhone 11 Pro Max")
+            HomeView()
+                
         }
     }
 }
