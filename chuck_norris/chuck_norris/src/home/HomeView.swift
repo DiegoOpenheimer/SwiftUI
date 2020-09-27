@@ -10,36 +10,41 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 10) {
-                Image("logo")
-                ItemOption(icon: "folder", title: "Categories")
-                .padding()
-                ItemOption(icon: "command", title: "Random")
-                .padding()
-                ItemOption(icon: "folder", title: "Search")
-                .padding()
+        GeometryReader { reader in
+            NavigationView {
+                VStack(alignment: .leading, spacing: 10) {
+                    Image("logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    ItemOption(icon: "folder", title: "Categories", destination: CategoriesView())
+                    .padding()
+                    ItemOption(icon: "command", title: "Random", destination: Text("okay"))
+                    .padding()
+                    ItemOption(icon: "folder", title: "Search", destination: Text("okay"))
+                    .padding()
+                }.frame(width: reader.size.width)
+                .navigationBarHidden(true)
+                .edgesIgnoringSafeArea(.all)
             }
-            .navigationBarHidden(true)
-            .edgesIgnoringSafeArea(.all)
         }
     }
 }
 
-struct ItemOption: View {
+struct ItemOption<Content: View>: View {
     
     var icon: String
     var title: String
+    var destination: Content
 
     var body: some View {
-        NavigationLink(destination: Text("nice")) {
+        NavigationLink(destination: destination) {
             HStack {
                 Image(systemName: icon)
                     .foregroundColor(Color.orange)
                 Text(title)
                     .font(.system(.headline, design: .monospaced))
                     .padding(.leading, 16)
-            }.foregroundColor(.black)
+            }.foregroundColor(Color("MyBlack"))
         }
     }
 
@@ -47,6 +52,9 @@ struct ItemOption: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        Group {
+            HomeView()
+                .previewDevice("iPad (8th generation)")
+        }
     }
 }
