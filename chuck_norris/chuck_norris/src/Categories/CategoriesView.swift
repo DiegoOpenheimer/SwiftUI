@@ -20,7 +20,7 @@ struct CategoriesView: View {
                 Text(message)
             } else {
                 List(categoryViewModel.categories, id: \.self) { name in
-                    NavigationLink(destination: CategoryDetailsView(name: name)
+                    NavigationLink(destination: MessageView(isRandom: false, name: name)
                                     .navigationBarTitle(Text(name), displayMode: .inline)) {
                         Text(name)
                     }

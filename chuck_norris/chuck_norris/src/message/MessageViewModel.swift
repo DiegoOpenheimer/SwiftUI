@@ -9,10 +9,10 @@
 import Foundation
 import Combine
 
-class CategoryDetailsViewModel: ObservableObject {
+class MessageViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
-    @Published var category: Category?
+    @Published var category: Message?
     @Published var messageError: String?
     
     var disposables: Set<AnyCancellable> = Set()
@@ -23,11 +23,15 @@ class CategoryDetailsViewModel: ObservableObject {
         self.categoryRepository = categoryRepository
     }
     
-    func load(name: String) {
+    func load(name: String?, isRandom: Bool = false) {
         disposables = Set()
         messageError = nil
         isLoading.toggle()
-        categoryRepository.loadCategory(params: ["category" : name])
+        var params: Dictionary<String, String>? = nil
+        if !isRandom && name != nil {
+            params = ["category" : name!]
+        }
+        categoryRepository.loadCategory(params: params)
             .sink(
                 receiveCompletion: {
                     self.isLoading = false

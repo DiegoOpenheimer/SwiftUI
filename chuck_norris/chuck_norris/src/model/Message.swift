@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Category: Codable {
+struct Message: Codable {
     let categories: [String]
     let createdAt: String
     let iconURL: String

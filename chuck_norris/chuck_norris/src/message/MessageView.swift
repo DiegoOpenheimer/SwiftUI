@@ -9,16 +9,17 @@
 import SwiftUI
 import Combine
 
-struct CategoryDetailsView: View {
+struct MessageView: View {
     
-    let name: String
-    @ObservedObject var categoryDetailsViewModel: CategoryDetailsViewModel = CategoryDetailsViewModel(categoryRepository: CategoryRepositoryImpl())
+    let isRandom: Bool?
+    let name: String?
+    @ObservedObject var messageViewModel: MessageViewModel = MessageViewModel(categoryRepository: CategoryRepositoryImpl())
     
     var body: some View {
         return VStack(spacing: 16) {
-            if categoryDetailsViewModel.isLoading {
+            if messageViewModel.isLoading {
                 ProgressView()
-            } else if let category = categoryDetailsViewModel.category {
+            } else if let category = messageViewModel.category {
                 Image("chuck")
                     .resizable()
                     .frame(width: 100, height: 100)
@@ -31,13 +32,13 @@ struct CategoryDetailsView: View {
 
         }
         .padding()
-        .onAppear { self.categoryDetailsViewModel.load(name: name) }
-        .onDisappear { self.categoryDetailsViewModel.dispose() }
+        .onAppear { self.messageViewModel.load(name: name, isRandom: isRandom ?? false) }
+        .onDisappear { self.messageViewModel.dispose() }
     }
 }
 
 struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryDetailsView(name: "animal")
+        MessageView(isRandom: false, name: "animal")
     }
 }

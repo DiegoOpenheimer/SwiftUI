@@ -16,5 +16,5 @@ struct CategoryError: Error {
 protocol CategoryRepository {
     func loadCategories() -> AnyPublisher<[String], CategoryError>
     
-    func loadCategory(params: Dictionary<String, Any>?) -> AnyPublisher<Category, CategoryError>
+    func loadCategory(params: Dictionary<String, Any>?) -> AnyPublisher<Message, CategoryError>
 }

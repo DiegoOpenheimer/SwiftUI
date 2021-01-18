@@ -36,8 +36,8 @@ class CategoryRepositoryImpl : CategoryRepository {
             .eraseToAnyPublisher()
     }
     
-    func loadCategory(params: Dictionary<String, Any>?) -> AnyPublisher<Category, CategoryError> {
-        var publisher: AnyPublisher<Result<Category, AFError>, Never>
+    func loadCategory(params: Dictionary<String, Any>?) -> AnyPublisher<Message, CategoryError> {
+        var publisher: AnyPublisher<Result<Message, AFError>, Never>
         publisher = http.get(path: "jokes/random", parameters: params)
         return publisher
             .tryMap(handleError)
